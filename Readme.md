@@ -1,4 +1,14 @@
-#### Build and debug
+# Omnigon Test Task
+This applications allows you to make requests to provided endpoint with repeatable iterations.
+You can change settings by taping on Settings icon from the left bottom corner.
+
+To start the app you need to follow this guide https://facebook.github.io/react-native/docs/getting-started.html, in the tab "Build projects with native code".
+
+#### Build and debug on IOS
+- plug in device or use emulator
+- build project from XCode or run ```react-native run-ios``` this command from the root of the project
+
+#### Build and debug on Android
 - Plug device in
 - Use adb reverse to prevent errors:
 ```
@@ -66,3 +76,12 @@ adb uninstall "com.omnigontestrn"
 Failed to extract native libraries, res=-18
 ```
 clear device storage space
+
+- for IOS error
+When build successful but packager throws this error:
+```
+UnhandledPromiseRejectionWarning: Unhandled promise rejection
+```
+- Clear watchman watches: ```watchman watch-del-all```
+- Delete the node_modules folder: ```rm -rf node_modules && npm install```
+- Reset packager cache: ```rm -fr $TMPDIR/react-*``` or ```npm start -- --reset-cache```

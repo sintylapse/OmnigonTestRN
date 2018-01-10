@@ -41,7 +41,6 @@ export default class Main extends Component {
             <Container>
                 {this.renderAccordingToLoadingStatus()}
                 <View style = {{
-                    // flex: 1,
                     justifyContent: 'space-between',
                     flexDirection: 'row'
                 }}>
