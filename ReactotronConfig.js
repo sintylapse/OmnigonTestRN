@@ -10,7 +10,7 @@ import { reactotronRedux } from 'reactotron-redux'
 if (__DEV__) {
     Reactotron
         .configure({
-            name: 'React Native Sandbox',
+            name: 'OmnigonTestRN',
         })
         .use(trackGlobalErrors())
         .use(openInEditor())
