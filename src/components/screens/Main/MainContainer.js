@@ -8,6 +8,10 @@ import * as globalActions from '../../../actions/globalActions.js'
 
 class MainContainer extends React.Component {
 
+    componentDidMount(){
+        this.props.actions.getSocialPosts()
+    }
+
     render() {
         return (
             <Main {...this.props} />
