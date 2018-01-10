@@ -37,12 +37,17 @@ export const getSocialPosts = () => async (dispatch, getState) => {
         let response = await fetch(feedUrl + '?limit=' + numberOfPostsToDisplay)
         response = await response.json()
 
-        const parsedRecords = response.map(record => ({
-            id: record.id,
-            postDate: record.created_at,
-            authorName: record.user.name,
-            messageBody: record.text,
-        }))
+        const parsedRecords = response.map(record => {
+            console.tron('record.created_at')
+            console.tron(record.created_at)
+
+            return {
+                id: record.id,
+                postDate: new Date(record.created_at),
+                authorName: record.user.name,
+                messageBody: record.text,
+            }
+        })
 
         dispatch(setSocialPosts(parsedRecords))
         dispatch(setSocialPostsLoadingStatus('valid'))

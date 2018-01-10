@@ -1,6 +1,7 @@
 import React, { PropTypes } from 'react'
 import { FlatList, View } from 'react-native'
 import { Container, Content, Card, CardItem, Body, Title, Text, Input, Label, Form, Item, Button, Icon } from 'native-base'
+import moment from 'moment'
 
 import AnimatedFadeIn from '../../common/AnimatedFadeIn.js'
 
@@ -13,7 +14,7 @@ export default function RecordsList({ data }){
                         <Text>{item.authorName}</Text>
                     </View>
                     <View>
-                        <Text>posted: {item.postDate}</Text>
+                        <Text>Posted: {moment(item.postDate).format('DD/MM/YYYY HH:mm')}</Text>
                     </View>
                 </CardItem>
                 <CardItem>
