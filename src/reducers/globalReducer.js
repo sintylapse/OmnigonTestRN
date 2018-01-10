@@ -1,7 +1,7 @@
 const initialState = {
     feedUrl: 'http://api.massrelevance.com/MassRelDemo/kindle.json',
     numberOfPostsToDisplay: '5',
-    updateInterval: '',
+    updateInterval: 0, // 0, 5000, 15000, 30000
     socialPosts: [],
     socialPostsLoadingStatus: 'loading', // loading, valid, invalid
 }

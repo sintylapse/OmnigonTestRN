@@ -38,9 +38,6 @@ export const getSocialPosts = () => async (dispatch, getState) => {
         response = await response.json()
 
         const parsedRecords = response.map(record => {
-            console.tron('record.created_at')
-            console.tron(record.created_at)
-
             return {
                 id: record.id,
                 postDate: new Date(record.created_at),
