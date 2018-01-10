@@ -10,6 +10,8 @@ class MainContainer extends React.Component {
 
     componentDidMount(){
         this.props.actions.getSocialPosts()
+
+        this.props.actions.initializeRequestsWithIntervals()
     }
 
     render() {

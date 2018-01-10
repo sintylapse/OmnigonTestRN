@@ -11,7 +11,11 @@ export default function Main({ feedUrl, numberOfPostsToDisplay, updateInterval, 
 
     const _onChangeFeedUrl = text => actions.setFeedUrl(text)
     const _onChangeNumberOfPostsToDisplay = text => actions.setNumberOfPostsToDisplay(text)
-    const _onChangeUpdateInterval = value => actions.setUpdateInterval(value)
+    const _onChangeUpdateInterval = value => {
+        actions.setUpdateInterval(value)
+        actions.initializeRequestsWithIntervals()
+    }
+
 
     return (
         <Container>

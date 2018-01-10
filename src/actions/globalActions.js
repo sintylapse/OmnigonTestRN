@@ -1,3 +1,5 @@
+import config from '../other/config.js'
+
 export function setFeedUrl(feedUrl){
     return {
         type: 'SET_FEED_URL', feedUrl
@@ -50,5 +52,17 @@ export const getSocialPosts = () => async (dispatch, getState) => {
         dispatch(setSocialPostsLoadingStatus('valid'))
     } catch (error) {
         dispatch(setSocialPostsLoadingStatus('invalid'))
+    }
+}
+
+export const initializeRequestsWithIntervals = () => async (dispatch, getState) => {
+    const { updateInterval } = getState().globalReducer
+
+    if (updateInterval === 0) {
+        clearInterval(config.updateIntervalTimer)
+    } else {
+        config.updateIntervalTimer = setInterval(() => {
+            dispatch(getSocialPosts())
+        }, updateInterval)
     }
 }
