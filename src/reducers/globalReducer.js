@@ -1,7 +1,9 @@
 const initialState = {
     feedUrl: 'http://api.massrelevance.com/MassRelDemo/kindle.json',
-    numberOfPostsToDisplay: 5,
-    updateInterval: false,
+    numberOfPostsToDisplay: '5',
+    updateInterval: '',
+    socialPosts: [],
+    socialPostsLoadingStatus: 'loading', // loading, valid, invalid
 }
 
 export default function globalReducer(state = initialState, action){
@@ -14,6 +16,12 @@ export default function globalReducer(state = initialState, action){
         }
         case 'SET_UPDATE_INTERVAL': return { ...state,
             updateInterval: action.updateInterval
+        }
+        case 'SET_SOCIAL_POSTS': return { ...state,
+            socialPosts: action.socialPosts
+        }
+        case 'SET_SOCIAL_POSTS_LOADING_STATUS': return { ...state,
+            socialPostsLoadingStatus: action.socialPostsLoadingStatus
         }
         default: return state
     }

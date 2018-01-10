@@ -28,7 +28,7 @@ export default function Main({ feedUrl, numberOfPostsToDisplay, updateInterval, 
                         <Label>Number of posts to display</Label>
                         <Input
                             keyboardType = "numeric"
-                            value = {numberOfPostsToDisplay.toString()}
+                            value = {numberOfPostsToDisplay}
                             onChangeText = {_onChangeNumberOfPostsToDisplay}
                         />
                     </Item>

@@ -21,7 +21,8 @@ class MainContainer extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    exampleValue: state.globalReducer.exampleValue,
+    socialPosts: state.globalReducer.socialPosts,
+    socialPostsLoadingStatus: state.globalReducer.socialPostsLoadingStatus,
 })
 
 const mapDispatchToProps = dispatch => ({

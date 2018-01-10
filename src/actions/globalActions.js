@@ -16,35 +16,37 @@ export function setUpdateInterval(updateInterval){
     }
 }
 
+export function setSocialPosts(socialPosts){
+    return {
+        type: 'SET_SOCIAL_POSTS', socialPosts
+    }
+}
+
+export function setSocialPostsLoadingStatus(socialPostsLoadingStatus){
+    return {
+        type: 'SET_SOCIAL_POSTS_LOADING_STATUS', socialPostsLoadingStatus
+    }
+}
+
 export const getSocialPosts = () => async (dispatch, getState) => {
-    const { feedUrl } = getState().globalReducer
+    const { feedUrl, numberOfPostsToDisplay } = getState().globalReducer
+
+    dispatch(setSocialPostsLoadingStatus('loading'))
 
     try {
-        console.tron('1')
-        const resp = await fetch(feedUrl)
-        const response = await resp.json()
+        let response = await fetch(feedUrl + '?limit=' + numberOfPostsToDisplay)
+        response = await response.json()
 
-        // Each post record should display:
-        // •	Post Date (formatted as DD/MM/YYYY HH:MM) in user’s timezone
-        // •	Author Name
-        // •	Message body
+        const parsedRecords = response.map(record => ({
+            id: record.id,
+            postDate: record.created_at,
+            authorName: record.user.name,
+            messageBody: record.text,
+        }))
 
-        // The mobile app should accept the following configuration:
-        // •	Feed URL
-        // •	Number of posts to display
-        // •	Update interval
-
-
-
-        console.tron('2')
-
-        console.tron('resp')
-        console.tron(resp)
-
-        console.tron('response')
-        console.tron(response[0])
-
+        dispatch(setSocialPosts(parsedRecords))
+        dispatch(setSocialPostsLoadingStatus('valid'))
     } catch (error) {
-        console.error('Custom error:', error)
+        dispatch(setSocialPostsLoadingStatus('invalid'))
     }
 }
